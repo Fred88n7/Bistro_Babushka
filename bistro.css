@@ -1,0 +1,93 @@
+body {
+  background-color: #e5e4e1;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  gap: 20px;
+  padding-bottom: 1px;
+}
+
+article {
+  border: solid 3px #4b4d4f;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+h1 {
+  color: #4b4d4f;
+  text-align: center;
+}
+h2 {
+  color: #4b4d4f;
+  padding: 1rem;
+}
+p {
+  color: #4b4d4f;
+}
+header {
+  background-color: #cdcac2;
+  justify-content: space-between;
+  padding: 6rem;
+}
+
+#popup {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0009;
+  display: none;
+  overflow: scroll;
+}
+
+#popup article {
+  width: 80vw;
+  display: grid;
+  margin: 4.5rem auto;
+  border-radius: 25px;
+  padding: 12px;
+  background-color: #e5e4e1;
+}
+
+#popup h3 {
+  color: #4b4d4f;
+}
+
+#popup img {
+  border-radius: 25px;
+}
+
+#luk {
+  position: fixed;
+  padding: 1rem;
+  font-size: 1.7rem;
+  font-weight: bolder;
+  color: white;
+  cursor: pointer;
+}
+button {
+  font-size: 1.6rem;
+  padding: 5px;
+  margin: 5px;
+  display: block;
+  background-color: #e5e4e1;
+  border: none;
+  border-radius: 12px;
+}
+
+footer {
+  background-color: #cdcac2;
+  display: flex;
+  text-align: left;
+  justify-content: space-around;
+}

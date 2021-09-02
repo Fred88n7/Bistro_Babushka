@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bistro.css">
+</head>
+<body>
+    <header>
+        <h1>Bistro Babushka</h1>
+    </header>
+    
+    <h2>Menu</h2>
+
+    <main></main>
+
+        <template>
+            <article>
+                <img src="" alt="" class="billede">
+                <h3 class="navn"></h3>
+                <p class="kortbeskrivelse"></p>
+                <p class="pris"></p>
+            </article>
+        </template>
+
+    <section id="popup">
+        <div id="luk"></div>
+        <article>
+            <img src="" alt="" class="billede">
+            <h3 class="navn"></h3>
+            <p class="kortbeskrivelse"></p>
+            <p class="pris"></p>
+        </article>
+    </section>
+
+    <footer>
+        <div class="adress">
+            <h4>Adresse</h4>
+            <p>Grønnegade 97</p>
+            <p>1234 København K</p>
+        </div>
+        <div class="open">
+            <h4>Åbningstider</h4>
+            <p>Mandag-Fredag 10:30-22:00</p>
+            <p>Lørdag 12:00-23:00</p>
+        </div>
+    </footer>
+
+    <script>
+        const url = "https://babushka-dd8a.restdb.io/rest/menu";
+        const medieurl = "medium/";
+
+        const options = {
+            headers:{
+                'x-apikey':"600ec2fb1346a1524ff12de4"
+            }
+        };
+
+        async function hentData() {
+            const resspons = await fetch(url , options);
+            const json = await resspons.json();
+            vis(json);
+        }
+
+        hentData();
+
+
+function vis(data){
+
+        const container = document.querySelector("main");
+        const template = document.querySelector("template").content;
+    data.forEach(element => {
+    console.log(element);
+                    const klon = template.cloneNode(true);
+                klon.querySelector(".billede").src = "medium/" + element.billednavn + "-md.jpg";
+                klon.querySelector(".navn").textContent =  element.navn;
+                klon.querySelector(".kortbeskrivelse").textContent =  element.kortbeskrivelse;
+                klon.querySelector(".pris").textContent = "Pris " + element.pris;
+                klon.querySelector("article").addEventListener("click", ()=>visDetaljer(element));
+                container.appendChild(klon)
+    });
+}
+
+        function visDetaljer(menu){
+            console.log(menu);
+            popup.style.display="block";
+            popup.querySelector("img").src = "medium/" +menu.billednavn + "-md.jpg";
+            popup.querySelector("h3").textContent = menu.navn;
+            popup.querySelector(".kortbeskrivelse").textContent = menu.kortbeskrivelse;
+            popup.querySelector(".pris").textContent = "Pris " + menu.pris;
+
+        }
+
+
+
+
+    </script>
+
+    
+</body>
+</html>
